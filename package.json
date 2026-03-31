@@ -1,0 +1,55 @@
+{
+  "name": "getConfirmDeliveryDate",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4.5.1",
+    "@sap/cds": "^9",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "connectivity": true,
+      "destinations": true,
+      "CE_SALESORDER_0001": {
+        "kind": "odata",
+        "model": "srv/external/CE_SALESORDER_0001",
+        "credentials": {
+          "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_salesorder/srvd_a2x/sap/salesorder/0001",
+          "headers": {
+            "APIkey": "cWsy6FkM05PY8MEsqodoKCnACZJyMdgH"
+          }
+        }
+      },
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "credentials": {
+          "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER",
+          "headers": {
+            "APIkey": "HThr0N2v8fJiKNnckKDcTsIjzsxI3BUy"
+          }
+        }
+      },
+      "API_SALES_ORDER_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_SALES_ORDER_SRV",
+         "credentials": {
+          "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV",
+          "headers": {
+            "APIkey": "cWsy6FkM05PY8MEsqodoKCnACZJyMdgH"
+          }
+        }
+      }
+    }
+  }
+}
