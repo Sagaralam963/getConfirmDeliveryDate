@@ -27,7 +27,7 @@ example:
       "destinations": {
         "binding": {
           "type": "cf",
-          "apiEndpoint": "https://api.cf.eu10.hana.ondemand.com",
+          "apiEndpoint": "",
           "org": "org Name",
           "space": "space name",
           "instance": "pr-creation-destination-service",
@@ -41,7 +41,7 @@ example:
       "connectivity": {
         "binding": {
           "type": "cf",
-          "apiEndpoint": "https://api.cf.eu10.hana.ondemand.com",
+          "apiEndpoint": "",
           "org": "org Name",
           "space": "space name",
           "instance": "pr-creation-connectivity-service",
@@ -134,7 +134,7 @@ Example:
       "destinations": {
         "binding": {
           "type": "cf",
-          "apiEndpoint": "https://api.cf.eu10.hana.ondemand.com",
+          "apiEndpoint": "",
           "org": "org Name",
           "space": "space name",
           "instance": "pr-creation-destination-service",
@@ -148,7 +148,7 @@ Example:
       "connectivity": {
         "binding": {
           "type": "cf",
-          "apiEndpoint": "https://api.cf.eu10.hana.ondemand.com",
+          "apiEndpoint": "",
           "org": "org Name",
           "space": "space name",
           "instance": "pr-creation-connectivity-service",
