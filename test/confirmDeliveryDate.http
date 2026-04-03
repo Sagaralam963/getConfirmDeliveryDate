@@ -3,7 +3,7 @@ GET http://localhost:4004/odata/v4/business-parner/getConfirmDeliveryDate HTTP/1
 
 ###
 
-GET http://localhost:4004/odata/v4/sales-order/getOpenSalesOrder(bp='1000072') HTTP/1.1
+GET http://localhost:4004/odata/v4/sales-order/getOpenSalesOrder(bp='Domestic US Customer 1') HTTP/1.1
 
 
 ###

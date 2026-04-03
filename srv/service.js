@@ -2,7 +2,6 @@ const cds = require('@sap/cds');
 
 module.exports = async (srv) => {
 
-  const SO = await cds.connect.to("CE_SALESORDER_0001");
   const BP = await cds.connect.to("API_BUSINESS_PARTNER");
   const S4SO = await cds.connect.to("API_SALES_ORDER_SRV");
 
@@ -47,10 +46,9 @@ module.exports = async (srv) => {
       if (!customerId) return [];
     }
 
-    const q = SELECT.from('SalesOrder').columns('SalesOrder', 'SoldToParty', 'SalesGroup', 'SalesOrderDate', 'TotalNetAmount', 'TransactionCurrency', 'OverallDeliveryStatus').where`SoldToParty = ${customerId} and OverallDeliveryStatus != 'C' and OverallDeliveryStatus != ''`
-    const orders = await SO.tx(req).run(q);
+    const q = SELECT.from('A_SalesOrder').columns('SalesOrder', 'SoldToParty', 'SalesGroup', 'SalesOrderDate', 'TotalNetAmount', 'TransactionCurrency', 'OverallDeliveryStatus').where`SoldToParty = ${customerId} and OverallDeliveryStatus != 'C' and OverallDeliveryStatus != ''`
+    const orders = await S4SO.tx(req).run(q);
 
-    console.log('orders ',customerId," : ",orders)
     return orders || [];
   })
 
@@ -74,8 +72,8 @@ module.exports = async (srv) => {
     }
 
     // Step 1: get open sales orders first
-    const openOrders = await SO.tx(req).run(
-      SELECT.from('SalesOrder')
+    const openOrders = await S4SO.tx(req).run(
+      SELECT.from('A_SalesOrder')
         .columns('SalesOrder')
         .where({
           SoldToParty: customerId,
@@ -83,11 +81,7 @@ module.exports = async (srv) => {
         })
     );
 
-    console.log('openOrders : ',openOrders);
-
     const salesOrders = openOrders.map(o => o.SalesOrder);
-
-    console.log('Sales Order : ',salesOrders);
 
     if (salesOrders.length === 0) return [];
 
@@ -103,7 +97,7 @@ module.exports = async (srv) => {
         SalesOrder: { in: salesOrders }
       });
 
-    return await SO.tx(req).run(q);
+    return await S4SO.tx(req).run(q);
   });
 
 

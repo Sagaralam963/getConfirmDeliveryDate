@@ -1,12 +1,10 @@
-using CE_SALESORDER_0001 as so from './external/CE_SALESORDER_0001';
-
 using API_SALES_ORDER_SRV as SO from './external/API_SALES_ORDER_SRV';
 
 using API_BUSINESS_PARTNER as S4 from './external/API_BUSINESS_PARTNER';
 
 service SalesOrderService {
 
-  entity SalesOrder             as
+  entity A_SalesOrder             as
     projection on SO.A_SalesOrder {
       key SalesOrder,
           SalesOrderDate,
@@ -17,7 +15,7 @@ service SalesOrderService {
           OverallDeliveryStatus
     }
 
-  function getOpenSalesOrder(bp: String)      returns many SalesOrder;
+  function getOpenSalesOrder(bp: String)      returns many A_SalesOrder;
 
 
   entity SalesOrderScheduleLine as
@@ -40,7 +38,7 @@ service SalesOrderService {
 
     }
 
-    function getConfirmDeliveryDate(bp: String) returns many SalesOrder;
+    function getConfirmDeliveryDate(bp: String) returns many SalesOrderScheduleLine;
 
 }
 
